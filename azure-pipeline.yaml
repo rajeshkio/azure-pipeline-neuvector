@@ -1,7 +1,7 @@
 pool:
   vmImage: 'ubuntu-latest'
 
-container: ubuntu:18.04
+container: ubuntu:22.04
 
 steps:
  - task: NeuVectorScan@3
