@@ -4,4 +4,17 @@ pool:
 container: ubuntu:18.04
 
 steps:
-- script: printenv
+ - task: NeuVectorScan@3
+   displayName: Scan image with NeuVector
+   inputs:
+     scanType: 'standalone'
+     nvContainerRegistry: 'NeuVector Registry on Docker'
+     nvRepository: 'neuvector/scanner'
+     nvTag: 'latest'
+     containerRegistry: 'Docker Hub'
+     repository: 'library/alpine'
+     tag: 'latest'
+     failOnHighSeverityThreshold: false
+     highSeverityThreshold: '2'
+     failOnMediumSeverityThreshold: false
+     mediumSeverityThreshold: '4'
