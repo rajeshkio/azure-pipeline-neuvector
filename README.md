@@ -9,24 +9,18 @@ Steps
 
 ### 1 - Create Personal Access Token from Azure devops dashboard. 
 
-a - Login to azure dashboard
-
-b - Click on user settings --> personal access token
-
-c - New Token 
-
-d - Give it a name e.g Azure-pipeline, choose custom defined under Scopes
-
-e - Click on Show all scopes, on Agent pools check mark Read & Manage, click on create.
-
-f - Copy the token and keep it safe, we will use this later.
+ - Login to azure dashboard
+ - Click on user settings --> personal access token
+ - Select new Token 
+ - Give it a name e.g Azure-pipeline, choose **custom defined** under **Scopes**
+ - Click on **Show all scopes**, on Agent pools check mark **Read & Manage**, click on create.
+ - Copy the token and keep it safe, we will use this later.
 
 
 ### 2 - Run command on VM
 
-a - Make sure docker is installed on the VM
-
-b - Run the below commands:-
+ - Make sure docker is installed on the VM
+ - Run the below commands:-
 
 ```shell
 export AZP_URL=https://dev.azure.com/rajeshkumar0292
@@ -48,35 +42,26 @@ Note - I have prebuilt the image, if you need you can use the dockerfile to modi
 
 ### 3 - Add connection string
 
-a - Login to Azure devops dashboard.
-b - Select project
-c - Select project settings at the left bottom.
-d - Go to service connection.
-e - New service connection.
-f - Select docker registry.
-g - Change Docker Registry URL to https://registry.hub.docker.com
-h - Enter Docker ID, Docker Password and gitve connection a name.
-i - You can select to Grant access permission to all pipelines depending on your use case and save.
+ - Login to Azure devops dashboard.
+ - Select project
+ - Select project settings at the left bottom.
+ - Go to service connection.
+ - New service connection.
+ - Select docker registry.
+ - Change Docker Registry URL to https://registry.hub.docker.com
+ - Enter Docker ID, Docker Password and give connection a name.
+ - You can select to Grant access permission to all pipelines depending on your use case and save.
 
 
 ### 4 - Create pipeline
 
-a - create a file to run a pipeline. eg azure-pipeline.yaml and push to your repo on github.
-
-b - Make sure to use the connection name created above for nvContainerRegistry and containerRegistry.
-
-c - Login to azure devops dashboard https://dev.azure.com/.
-
-d - Create a project
-
-e - To create a new pipleine, click on New pipeline
-
-f - Choose github
-
-g - It might ask for authorisation, login and authorise
-
-h - Choose the appropriate repo created in the first step
-
-i - On the configure tab, select Existing Azure pipelines YAML files, select the branch and path as per your repo and file, and click continue
-
-j - Save or run the pipeline, it might ask to permit, allow it.
+ - Create a file to run a pipeline. eg azure-pipeline.yaml and push to your repo on github.
+ - Make sure to use the connection name created above for **nvContainerRegistry and containerRegistry**.
+ - Login to azure devops dashboard https://dev.azure.com/.
+ - Create a project
+ - To create a new pipleine, click on **New pipeline**.
+ - Choose github
+ - It might ask for authorisation, login and authorise.
+ - Choose the appropriate repo created in the first step.
+ - On the configure tab, select **Existing Azure pipelines YAML files**, select the branch and path as per your repo and file, and click continue
+ - Save or run the pipeline, it might ask to permit, allow it.
