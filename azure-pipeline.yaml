@@ -5,10 +5,10 @@ steps:
    displayName: Scan image with NeuVector
    inputs:
      scanType: 'standalone'
-     nvContainerRegistry: 'docker-test'
+     nvContainerRegistry: https://registry.hub.docker.com
      nvRepository: 'neuvector/scanner'
      nvTag: 'latest'
-     containerRegistry: 'docker-test'
+     containerRegistry: https://registry.hub.docker.com
      repository: 'library/alpine'
      tag: 'latest'
      failOnHighSeverityThreshold: false
