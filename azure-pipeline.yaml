@@ -1,20 +1,35 @@
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-18.04'
 
-container: ubuntu:22.04
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+  paths:
+    exclude:
+    - README.md
+    - example/
+
+pr: none
+
+variables:
+  imageName: 'dockeragent'
+  imageTag: $(build.buildId)
+  skipComponentGovernanceDetection: true
 
 steps:
- - task: NeuVectorScan@3
-   displayName: Scan image with NeuVector
-   inputs:
-     scanType: 'standalone'
-     nvContainerRegistry: 'docker-test'
-     nvRepository: 'neuvector/scanner'
-     nvTag: 'latest'
-     containerRegistry: 'docker-test'
-     repository: 'library/alpine'
-     tag: 'latest'
-     failOnHighSeverityThreshold: false
-     highSeverityThreshold: '2'
-     failOnMediumSeverityThreshold: false
-     mediumSeverityThreshold: '4'
+- bash: docker build -f $(system.defaultWorkingDirectory)/Dockerfile -t $(imageName):$(imageTag) -t $(imageName):latest $(system.defaultWorkingDirectory)
+  displayName: 'docker build'
+
+- bash: |
+    docker run --network="host" -d --cap-add SYS_PTRACE \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /usr/bin/docker:/usr/bin/docker \
+    -v /usr/local/bin/docker-compose:/usr/bin/docker-compose \
+    --add-host host.docker.internal:host-gateway \
+    -e AZP_URL=https://dev.azure.com/rajeshkumar0292 \
+    -e AZP_TOKEN=$AgentPoolPAT \
+    $(imageName):$(imageTag)
+    sleep 10
+
