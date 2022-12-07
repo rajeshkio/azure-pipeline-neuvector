@@ -12,7 +12,7 @@ docker run --network="host" --cap-add SYS_PTRACE \
 	 -v /usr/bin/docker:/usr/bin/docker \
 	 -v /usr/local/bin/docker-compose:/usr/bin/docker-compose \
 	 -v /azp/_work:/azp/_work --add-host host.docker.internal:host-gateway \
-	 --name azureagentdocker -e AZP_URL=https://dev.azure.com/rajeshkumar0292 \
-	 -e AZP_TOKEN=t3vcyyvkifkuqy2ikzs4vtfnyc6g26zwfqpqtomuynn6t4ot6rja  \
+	 --name azureagentdocker -e AZP_URL=$AZP_URL \
+	 -e AZP_TOKEN=$AZP_TOKEN  \
 	rk90229/docker-azure-agent:v1
 ```
