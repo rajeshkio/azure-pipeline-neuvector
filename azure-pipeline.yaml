@@ -12,7 +12,7 @@ trigger:
     - example/
 
 container:
-  image: rk90229/dockeragent
+  image: rk90229/dockeragent:v1
   options:  --network="host" -d --cap-add SYS_PTRACE -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker -v /usr/local/bin/docker-compose:/usr/bin/docker-compose --add-host host.docker.internal:host-gateway -e AZP_URL=https://dev.azure.com/rajeshkumar0292 -e AZP_TOKEN=$AgentPoolPAT 
 
 steps:
