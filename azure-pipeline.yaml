@@ -19,7 +19,6 @@ variables:
   imageTag: $(build.buildId)
   skipComponentGovernanceDetection: true
 
-container: $(imageName):$(imageTag)
 
 steps:
 - bash: docker build -f $(system.defaultWorkingDirectory)/Dockerfile -t $(imageName):$(imageTag) -t $(imageName):latest $(system.defaultWorkingDirectory)
@@ -36,4 +35,5 @@ steps:
     $(imageName):$(imageTag)
     sleep 10
 
-- bash: cat /proc/1/sched | head -n 1
+container: $(imageName):$(imageTag)
+
