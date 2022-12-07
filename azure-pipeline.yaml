@@ -13,10 +13,13 @@ trigger:
 
 pr: none
 
+
 variables:
   imageName: 'dockeragent'
   imageTag: $(build.buildId)
   skipComponentGovernanceDetection: true
+
+container: $(imageName):$(imageTag)
 
 steps:
 - bash: docker build -f $(system.defaultWorkingDirectory)/Dockerfile -t $(imageName):$(imageTag) -t $(imageName):latest $(system.defaultWorkingDirectory)
