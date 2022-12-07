@@ -33,4 +33,4 @@ steps:
     $(imageName):$(imageTag)
     sleep 10
 
-- bash: cat /etc/issues
+- bash: cat /proc/1/sched | head -n 1
