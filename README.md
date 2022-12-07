@@ -1,9 +1,9 @@
 # How to run docker on VMs to run azure agent inside docker
 
 
-#  https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops#mounting-volumes-using-docker-within-a-docker-container
+https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops#mounting-volumes-using-docker-within-a-docker-container
 
-# " If a Docker container runs inside another Docker container, they both use host's daemon, so all mount paths reference the host, not the container."
+ If a Docker container runs inside another Docker container, they both use host's daemon, so all mount paths reference the host, not the container.
  
 
 ```shell
