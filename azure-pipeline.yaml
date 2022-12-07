@@ -1,20 +1,17 @@
-pool:
-  vmImage: 'ubuntu-22.04'
-
-trigger:
-  batch: true
-  branches:
-    include:
-    - master
-  paths:
-    exclude:
-    - README.md
-    - example/
-
-container:
-  image: rk90229/dockeragent:v1
-  options: -e AZP_URL=https://dev.azure.com/rajeshkumar0292 -e AZP_TOKEN=$AgentPoolPAT 
+pool: Default
 
 steps:
-- bash: cat /proc/1/sched | head -n 1
-
+ - task: NeuVectorScan@3
+   displayName: Scan image with NeuVector
+   inputs:
+     scanType: 'standalone'
+     nvContainerRegistry: 'docker-test'
+     nvRepository: 'neuvector/scanner'
+     nvTag: 'latest'
+     containerRegistry: 'docker-test'
+     repository: 'library/alpine'
+     tag: 'latest'
+     failOnHighSeverityThreshold: false
+     highSeverityThreshold: '2'
+     failOnMediumSeverityThreshold: false
+     mediumSeverityThreshold: '4'
