@@ -1,5 +1,5 @@
 pool:
-  vmImage: 'ubuntu-18.04'
+  vmImage: 'ubuntu-22.04'
 
 trigger:
   batch: true
@@ -33,3 +33,4 @@ steps:
     $(imageName):$(imageTag)
     sleep 10
 
+- bash: cat /etc/issues
