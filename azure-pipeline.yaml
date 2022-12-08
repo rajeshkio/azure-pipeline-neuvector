@@ -25,7 +25,7 @@ steps:
  - script: docker push rk90229/hello-world:$(Build.BuildNumber)
    displayName: "Push image to dockerhub"
 
- - script: PublishPipelineArtifact@1
+ - task: PublishPipelineArtifact@1
    inputs:
      targetPath: 'scan_result.json'
      artifactType: 'pipeline'
