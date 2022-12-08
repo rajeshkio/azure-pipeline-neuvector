@@ -10,7 +10,6 @@ trigger:
      - README.md
        - azureDockerBuild/
 
-
 steps:
  - script: echo Hello, world!
    displayName: "print hello world"
