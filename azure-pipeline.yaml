@@ -23,6 +23,7 @@ steps:
      mediumSeverityThreshold: '4'
 
  - script: |
+     echo docker login -u $DOCKER_USER -p "$env:DOCKER_PASSWORD"
      docker login -u $DOCKER_USER -p "$env:DOCKER_PASSWORD"
      docker push rk90229/hello-world:$(Build.BuildNumber)
    env:
