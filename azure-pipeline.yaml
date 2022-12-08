@@ -23,7 +23,6 @@ steps:
      mediumSeverityThreshold: '4'
 
  - script: |
-     echo docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
      docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
      docker push rk90229/hello-world:$(Build.BuildNumber)
    env:
@@ -32,6 +31,6 @@ steps:
 
  - task: PublishPipelineArtifact@1
    inputs:
-     targetPath: 'scan_result.json'
+     targetPath: '$(System.DefaultWorkingDirectory)'
      artifactType: 'pipeline'
-     artifactName: 'scan_results'
+     artifactName: 'scan_result'
