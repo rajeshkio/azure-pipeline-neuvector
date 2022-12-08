@@ -13,9 +13,9 @@
  - Build the Docker azure agent 
 
    ```shell
-      docker build -t "$yourdockerusername"azure-agent-docker:v1 .
+      docker build -t "$yourdockerhubusername"/azure-agent-docker:v1 .
       docker login // optional but recommended
-      docker push "$yourdockerusername"/azure-agent-docker:v1  // optional but recommended
+      docker push "$yourdockerhubusername"/azure-agent-docker:v1  // optional but recommended
    ```
  - Run the docker container:
     
@@ -30,7 +30,7 @@
 	 	-v /azp/_work:/azp/_work --add-host host.docker.internal:host-gateway \
 	 	--name azureagentdocker -e AZP_URL=$AZP_URL \
 	 	-e AZP_TOKEN=$AZP_TOKEN  \
-		"$yourdockerusername"/azure-agent-docker:v1
+		"$yourdockerhubusername"/azure-agent-docker:v1
       
     ```
 
