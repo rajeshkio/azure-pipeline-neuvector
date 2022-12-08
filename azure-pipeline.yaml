@@ -31,6 +31,5 @@ steps:
 
  - task: PublishPipelineArtifact@1
    inputs:
-     targetPath: '$(System.DefaultWorkingDirectory)'
-     artifactType: 'pipeline'
-     artifactName: 'scan_result'
+     targetPath: '$(Pipeline.Workspace)'
+     artifactName: 'scan-result'
