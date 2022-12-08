@@ -8,7 +8,7 @@ trigger:
  paths:
    exclude:
      - README.md
-       - azureDockerBuild/
+     - azureDockerBuild/
 
 steps:
  - script: echo Hello, world!
