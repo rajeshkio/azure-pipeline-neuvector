@@ -1,6 +1,12 @@
 pool: Default
 
 steps:
+ - script: echo Hello, world!
+   displayName: "print hello world"
+
+ - script: docker build -t rk90229/hello-world:$(Build.BuildNumber) -f Dockerfile_Hello_World_Image 
+   displayName: "Build image from dockerfile"
+
  - task: NeuVectorScan@3
    displayName: Scan image with NeuVector
    inputs:
@@ -9,9 +15,18 @@ steps:
      nvRepository: 'neuvector/scanner'
      nvTag: 'latest'
      containerRegistry: 'docker-test'
-     repository: 'rk90229'
+     repository: 'rk90229/hello-world'
      tag: 'latest'
      failOnHighSeverityThreshold: false
      highSeverityThreshold: '2'
      failOnMediumSeverityThreshold: false
      mediumSeverityThreshold: '4'
+
+- script: docker push rk90229/hello-world:$(Build.BuildNumber)
+  displayName: "Push image to dockerhub"
+
+- script: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'scan_result.json'
+    artifactType: 'pipeline'
+    artifactName: 'scan_results'
