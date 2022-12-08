@@ -4,7 +4,7 @@ steps:
  - script: echo Hello, world!
    displayName: "print hello world"
 
- - script: docker build -t rk90229/hello-world:$(Build.BuildNumber) -f Dockerfile_Hello_World_Image 
+ - script: docker build -t rk90229/hello-world:$(Build.BuildNumber) -f Dockerfile_Hello_World_Image . 
    displayName: "Build image from dockerfile"
 
  - task: NeuVectorScan@3
