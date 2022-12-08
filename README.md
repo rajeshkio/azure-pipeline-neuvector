@@ -19,7 +19,7 @@ Steps
 
 ### 2 - Run command on VM
 
- - Make sure docker is installed on the VM
+ - Make sure docker is installed on the VM. I have used vagrant to deploy a VM and installed docker on it.
  - Run the below commands:-
 
 ```shell
