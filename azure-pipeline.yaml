@@ -15,8 +15,8 @@ steps:
      nvRepository: 'neuvector/scanner'
      nvTag: 'latest'
      containerRegistry: 'docker-test'
-     repository: rk90229/hello-world:$(Build.BuildNumber)
-     tag: 'latest'
+     repository: 'rk90229/hello-world'
+     tag: $(Build.BuildNumber)
      failOnHighSeverityThreshold: false
      highSeverityThreshold: '2'
      failOnMediumSeverityThreshold: false
