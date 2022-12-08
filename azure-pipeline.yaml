@@ -22,7 +22,9 @@ steps:
      failOnMediumSeverityThreshold: false
      mediumSeverityThreshold: '4'
 
- - script: docker push rk90229/hello-world:$(Build.BuildNumber)
+ - script: |
+     docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+     docker push rk90229/hello-world:$(Build.BuildNumber)
    displayName: "Push image to dockerhub"
 
  - task: PublishPipelineArtifact@1
