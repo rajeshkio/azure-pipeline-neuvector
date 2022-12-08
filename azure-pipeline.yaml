@@ -1,15 +1,15 @@
 pool: Default
 
 trigger:
--  batch: true
--  branches:
--    include:
--    - main
--  paths:
--    exclude:
--    - README.md
--    - azureDockerBuild/
--
+ batch: true
+ branches:
+   include:
+     - main
+ paths:
+   exclude:
+     - README.md
+       - azureDockerBuild/
+
 
 steps:
  - script: echo Hello, world!
