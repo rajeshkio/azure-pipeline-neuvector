@@ -9,7 +9,7 @@ steps:
      nvRepository: 'neuvector/scanner'
      nvTag: 'latest'
      containerRegistry: 'docker-test'
-     repository: 'library/alpine'
+     repository: 'rk90229'
      tag: 'latest'
      failOnHighSeverityThreshold: false
      highSeverityThreshold: '2'
