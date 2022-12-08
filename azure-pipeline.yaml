@@ -23,8 +23,10 @@ steps:
      mediumSeverityThreshold: '4'
 
  - script: |
-     docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+     docker login -u $DOCKER_USER -p "$env:DOCKER_PASSWORD"
      docker push rk90229/hello-world:$(Build.BuildNumber)
+   env:
+     DOCKER_PASSWORD: $(DOCKER_PASSWORD)
    displayName: "Push image to dockerhub"
 
  - task: PublishPipelineArtifact@1
