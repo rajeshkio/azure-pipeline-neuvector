@@ -65,4 +65,5 @@ Note - I have prebuilt the image, if you need you can use the dockerfile to modi
  - Choose the appropriate repo created in the first step.
  - On the configure tab, select **Existing Azure pipelines YAML files**, select the branch and path as per your repo and file, and click continue
  - Save or run the pipeline, it might ask to permit, allow it.
- - Might want to add docker username or password as env, if you want to push the image, edit the pipeline, click on variables, add docker username/password as required. Use those environment variable in azure-pipeline.yaml. I have used DOCKER_USER and DOCKER_PASSWORD.
+ - You might want to add docker username or password as env, if you want to push the image. 
+   Edit the pipeline, click on variables, add docker username/password as required. Use those environment variable in azure-pipeline.yaml. I have used DOCKER_USER and DOCKER_PASSWORD.

@@ -6,7 +6,7 @@
 
    For ubuntu
    ```shell
-         sudo apt-get installl vagrant -y
+         sudo apt-get install vagrant -y
    ```
 
  - run **vagrant up**. This will start the VM and install docker in it.
