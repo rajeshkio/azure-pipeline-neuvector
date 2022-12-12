@@ -38,7 +38,7 @@ docker run --network="host" --cap-add SYS_PTRACE \
 ```
 
 
-Note - I have prebuilt the image, if you need you can use the dockerfile to modify anything. Please follow the above microsoft link.
+Note - I have prebuilt the image, if you need you can use the [dockerfile](azureDockerBuild/Dockerfile) to modify anything. Please follow the above microsoft link for more reference.
 
 ### 3 - Add connection string
 
