@@ -9,7 +9,8 @@
          sudo apt-get install vagrant -y
    ```
 
- - run **vagrant up**. This will start the VM and install docker in it.
+ - Run **vagrant up**. This will start the VM and install docker in it.
+ - Install docker. For ubuntu `sudo apt update -y && sudo apt install docker*`
  - Build the Docker azure agent 
 
    ```shell

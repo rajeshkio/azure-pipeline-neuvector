@@ -9,7 +9,7 @@ Steps
 
 ### 1 - Create Personal Access Token from Azure devops dashboard. 
 
- - Login to azure dashboard
+ - Login to azure dashboard https://dev.azure.com/
  - Click on user settings --> personal access token
  - Select new Token 
  - Give it a name e.g Azure-pipeline, choose **custom defined** under **Scopes**
