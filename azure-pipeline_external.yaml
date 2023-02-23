@@ -17,6 +17,12 @@ steps:
  - script: docker build -t rk90229/hello-world:$(Build.BuildNumber) -f Dockerfile_Hello_World_Image . 
    displayName: "Build image from dockerfile"
 
+ - script: |
+     docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+     docker push rk90229/hello-world:$(Build.BuildNumber)
+   env:
+     DOCKER_PASSWORD: $(DOCKER_PASSWORD)
+   displayName: "Push image to dockerhub"
 
  - task: NeuVectorScan@3
    inputs:
@@ -24,18 +30,11 @@ steps:
      neuvectorScanner: 'neuvector-external-scanner'
      containerRegistry: 'docker-test'
      repository: 'rk90229/hello-world'
-     tag: 'latest'
+     tag: $(Build.BuildNumber) 
      failOnHighSeverityThreshold: false
      highSeverityThreshold: '2'
      failOnMediumSeverityThreshold: false
      mediumSeverityThreshold: '4'
-
- - script: |
-     docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-     docker push rk90229/hello-world:$(Build.BuildNumber)
-   env:
-     DOCKER_PASSWORD: $(DOCKER_PASSWORD)
-   displayName: "Push image to dockerhub"
 
  - task: PublishPipelineArtifact@1
    inputs:
