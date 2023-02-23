@@ -24,8 +24,6 @@ steps:
      neuvectorScanner: 'neuvector-external-scanner'
      containerRegistry: 'docker-test'
      repository: 'rk90229/hello-world'
-     tag: '$(Build.BuildNumber)'
-     repository: 'library/alpine'
      tag: 'latest'
      failOnHighSeverityThreshold: false
      highSeverityThreshold: '2'
