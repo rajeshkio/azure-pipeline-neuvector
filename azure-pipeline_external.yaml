@@ -1,0 +1,45 @@
+pool: Default
+
+trigger:
+ batch: true
+ branches:
+   include:
+     - main
+ paths:
+   exclude:
+     - README.md
+     - azureDockerBuild/
+
+steps:
+ - script: echo Hello, world!
+   displayName: "print hello world"
+
+ - script: docker build -t rk90229/hello-world:$(Build.BuildNumber) -f Dockerfile_Hello_World_Image . 
+   displayName: "Build image from dockerfile"
+
+
+ - task: NeuVectorScan@3
+  inputs:
+    scanType: 'external'
+    neuvectorScanner: 'neuvector-external-scanner'
+    containerRegistry: 'docker-test'
+    repository: 'rk90229/hello-world'
+    tag: '$(Build.BuildNumber)'
+    repository: 'library/alpine'
+    tag: 'latest'
+    failOnHighSeverityThreshold: false
+    highSeverityThreshold: '2'
+    failOnMediumSeverityThreshold: false
+    mediumSeverityThreshold: '4'
+
+ - script: |
+     docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+     docker push rk90229/hello-world:$(Build.BuildNumber)
+   env:
+     DOCKER_PASSWORD: $(DOCKER_PASSWORD)
+   displayName: "Push image to dockerhub"
+
+ - task: PublishPipelineArtifact@1
+   inputs:
+     targetPath: '$(Pipeline.Workspace)'
+     artifactName: 'scan-result'
