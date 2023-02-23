@@ -19,18 +19,18 @@ steps:
 
 
  - task: NeuVectorScan@3
-  inputs:
-    scanType: 'external'
-    neuvectorScanner: 'neuvector-external-scanner'
-    containerRegistry: 'docker-test'
-    repository: 'rk90229/hello-world'
-    tag: '$(Build.BuildNumber)'
-    repository: 'library/alpine'
-    tag: 'latest'
-    failOnHighSeverityThreshold: false
-    highSeverityThreshold: '2'
-    failOnMediumSeverityThreshold: false
-    mediumSeverityThreshold: '4'
+   inputs:
+     scanType: 'external'
+     neuvectorScanner: 'neuvector-external-scanner'
+     containerRegistry: 'docker-test'
+     repository: 'rk90229/hello-world'
+     tag: '$(Build.BuildNumber)'
+     repository: 'library/alpine'
+     tag: 'latest'
+     failOnHighSeverityThreshold: false
+     highSeverityThreshold: '2'
+     failOnMediumSeverityThreshold: false
+     mediumSeverityThreshold: '4'
 
  - script: |
      docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
