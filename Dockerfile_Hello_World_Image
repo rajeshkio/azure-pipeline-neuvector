@@ -1,2 +1,2 @@
-FROM alpine
-CMD ["echo", "Hello World!"]
+FROM rk90229/count-user-visits
+CMD ["echo", "Hello World!!"]
